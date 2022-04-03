@@ -26,30 +26,22 @@ class UpdatePcode extends Command
             
         $dotenv->load();
 
-        if ($_ENV['PMINT_VERSION'] == "1.3") {
+        try {
 
-            echo "\033[32mPmint sudah versi terbaru !\033[0m";
+            echo "\033[32m
++--------------------------+
+| Update Pandoracode Mint  |
++--------------------------+
 
-        }else{
+* Update on process.
+\033[0m";
+            // system('curl http://pandoradev.site/api/update-pmint \ --output file-update.zip');
+            // system('curl http://pandoradev.site/api/get-command \ --output update');
 
-            try {
+            // system('php update');
 
-                echo "\033[32m
-    +--------------------------+
-    | Update Pandoracode Mint  |
-    +--------------------------+
-    
-    * Update on process.
-    \033[0m";
-                system('curl http://pandoradev.site/api/update-pmint \ --output file-update.zip');
-                system('curl http://pandoradev.site/api/get-command \ --output update');
-    
-                system('php update');
-    
-            } catch (\Exception $th) {
-                echo $th->getMessage();
-            }
-
+        } catch (\Exception $th) {
+            echo $th->getMessage();
         }
     }
 }
