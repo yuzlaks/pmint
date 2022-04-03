@@ -26,7 +26,7 @@ class UpdatePcode extends Command
             
         $dotenv->load();
 
-        if ($_ENV['PMINT_VERSION'] == "1.2") {
+        if ($_ENV['PMINT_VERSION'] == "1.3") {
 
             echo "\033[32mPmint sudah versi terbaru !\033[0m";
 

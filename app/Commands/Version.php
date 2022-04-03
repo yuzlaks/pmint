@@ -22,7 +22,7 @@ class Version extends Command
     {
         echo "\033[32m
 +-----------------------+
-| Pandoracode Mint 1.2  |
+| Pandoracode Mint 1.3  |
 +-----------------------+
 Copyright (c) Pandoradev.
 \033[0m";
