@@ -26,7 +26,7 @@ class ShowTables extends Command
             
             $db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
 
-            $query = $db->query("show tables from pmint");
+            $query = $db->query("show tables from $_ENV[DB_NAME]");
             
 
             $data = [];
