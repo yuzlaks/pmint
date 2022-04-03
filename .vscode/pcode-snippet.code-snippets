@@ -1,0 +1,195 @@
+{
+
+	// Template
+	"Code Highlight": {
+  
+	  "prefix": "p:code",
+  
+	  "body": "!! code : $1 !!"
+  
+	},
+
+
+
+	//PHP
+
+	"Echo": {
+  
+	  "prefix": "p:echo",
+  
+	  "body": "{{ $1 }}"
+  
+	},
+
+	"PHP Syntax": {
+  
+	  "prefix": "php",
+  
+	  "body": "<?php $1 ?>"
+  
+	},
+
+	"Foreach": {
+  
+	  "prefix": "p:foreach",
+  
+	  "body": "!! foreach($$data AS $$key => $1) !! \n\n!! endforeach !!"
+  
+	},
+
+	//layouts
+
+	"Extends File": {
+  
+	  "prefix": "p:extends",
+  
+	  "body": "!! extends layouts/$1 !!"
+  
+	},
+
+	"Block yield content": {
+  
+	  "prefix": "p:block",
+  
+	  "body": "!! block $1 !! \n\n!! endblock !!"
+  
+	},
+
+	"Yield": {
+  
+	  "prefix": "p:yield",
+  
+	  "body": "!! yield $1 !!"
+  
+	},
+
+	//if
+	"If statement": {
+  
+		"prefix": "p:if",
+	
+		"body": "!! if($1) !! \n\n!! endif !!"
+	
+	},
+
+	"Else": {
+  
+		"prefix": "p:else",
+	
+		"body": "!! else !!"
+	
+	},
+
+	"Else if": {
+  
+		"prefix": "p:elseif",
+	
+		"body": "!! elseif($1) !!"
+	
+	},
+
+	"If Else": {
+  
+		"prefix": "p:ifelse",
+	
+		"body": "!! if($1) !! \n\n!! else !!\n\n!! endif !!"
+	
+	},
+
+
+	//Helpers
+	"Url": {
+  
+		"prefix": "p:url",
+	
+		"body": "{{ url('$1') }}"
+	
+	},
+
+	"Asset": {
+  
+		"prefix": "p:asset",
+	
+		"body": "{{ asset('$1') }}"
+	
+	},
+
+	"Make Script Pattern Controller" : {
+
+		"prefix": "p:controller",
+
+		"body": "<?php \n\nnamespace controllers;\n\nclass $1\n{\n\tpublic function index()\n\t{\n\t\t\n\t}\n}"
+
+	},
+
+	"Start PHP" : {
+
+		"prefix": "p:php",
+
+		"body": "!!$1!!"
+
+	},
+
+	"Var dump information from variable" : {
+
+		"prefix": "dump",
+
+		"body": "dump($1)"
+
+	},
+
+	"Check information from variable" : {
+
+		"prefix": "check",
+
+		"body": "check($1)"
+
+	},
+
+	"Response Datatable" : {
+
+		"prefix": "datatable",
+
+		"body": "\t\t$$dt = new Datatables(Database::connect());\n\n\t\t$$dt->query('select column from $1');\n\n\t\t$$dt->add('action', function($$data){\n\n\t\t\treturn 'some element';\n\n\t\t});\n\n\t\techo $$dt->generate();\n"
+
+	},
+
+
+
+	//HTML
+	"Table" : {
+
+		"prefix" : "p:table",
+
+		"body": "<table border='1px'>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>No</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\n\t\t!!foreach($$data AS $$key => $$1)!!\n\n\t\t<tr>\n\n\t\t\t<td>{{ $2... }}</td>\n\n\t\t</tr>\n\n\t\t!!endforeach!!\n\n\t</tbody>\n</table>"
+
+	},
+
+	"Select" : {
+
+		"prefix" : "p:select",
+
+		"body": "<select name='' id='' class=''>\n\n\t!! foreach($data AS $1) !!\n\n\t\t<option value='{{ $2 }}'>{{ $3 }}</option>\n\n\t!! endforeach !!\n\n</select>\n"
+
+	},
+
+	"Ajax Table" : {
+
+		"prefix" : "p:scripttable",
+
+		"body" : "<script>\n\t$(document).ready(function() {\n\t\t$('#datatable').DataTable({\n\t\t\t'processing': true,\n\t\t\t'serverSide': true,\n\t\t\t'serverMethod': 'post',\n\t\t\t'ajax': {\n\t\t\t\t'url': '{{ url('$1') }}'\n\t\t\t},\n\t\t\t'columns': [\n\n\t\t\t\t{data: 'column'},\n\n\t\t\t]\n\t\t});\n\t});\n</script>"
+
+	},
+	
+	//Validate
+	"Validate" : {
+
+		"prefix" : "p:validate",
+
+		"body" : "$$validator = new Validator;\n\n$$validation = $$validator->validate($$request->all(), [\n\n'name_field' => 'required'\n\n]);\nif ($$validation->fails()) {\n\n// handling errors\n\n$$errors = $$validation->errors();\n\ncheck($$errors->firstOfAll());\n\nexit();\n\n} else {\n\necho 'Success!';\n\n}\n\n"
+
+	}
+	
+	
+  
+}

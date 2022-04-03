@@ -1,0 +1,62 @@
+{
+    "name": "pandoradev/pandoracode-mint",
+    "type": "template",
+    "description": "The fast mini PHP Framework",
+    "keywords": [
+        "template"
+    ],
+    "homepage": "http://pandoradev.site/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yusron Laksono",
+            "email": "yuzyus268@gmail.com",
+            "homepage": "http://pandoradev.site/",
+            "role": "Developer"
+        },
+        {
+            "name": "M. Maksum Irfani",
+            "homepage": "http://pandoradev.site/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/console": "2.6.7",
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.4",
+        "usmanhalalit/pixie": "^2.0",
+        "miladrahimi/phprouter": "5.*",
+        "voku/pagination": "^4.0",
+        "rakit/validation": "^1.4",
+        "nesbot/carbon": "^2.57",
+        "delight-im/auth": "^8.3",
+        "phpmailer/phpmailer": "^6.6",
+        "phelium/mysql-backup": "^1.0",
+        "apfelbox/php-file-download": "^2.1",
+        "fakerphp/faker": "^1.19"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/yuzlaks/pandoracode-mint"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "app/Commands",
+            "controllers",
+            "database",
+            "app/Resources/Views/Error"
+        ],
+        "files": [
+            "app/Helpers/Views.php",
+            "app/Helpers/Statement.php"
+        ]
+    },
+    "require-dev": {
+        "symfony/var-dumper": "*"
+    },
+    "config": {
+        "platform-check": false
+    }
+}

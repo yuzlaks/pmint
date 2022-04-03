@@ -1,0 +1,75 @@
+#!/usr/bin/env php
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Composer Autoloader
+|--------------------------------------------------------------------------
+|
+| Load semua vendor composer, menggunakan include 'vendor/autoload.php'
+| supaya project dapat ter-integrasi dengan vendor.
+|
+*/
+
+require __DIR__ . '/vendor/autoload.php';
+
+/* Auto load .env */
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+/**
+ |--------------------------------------------------------------------------
+ | Pixie
+ |--------------------------------------------------------------------------
+ |
+ | A lightweight, expressive, framework agnostic query builder 
+ | for PHP it can also be referred as a Database Abstraction Layer. 
+ | Pixie supports MySQL, SQLite and PostgreSQL and it takes care of 
+ | query sanitization, table prefixing and many other things 
+ | with a unified API.
+ |
+ */
+
+require __DIR__ . '/app/Package/Pixie.php';
+
+/*
+|--------------------------------------------------------------------------
+| Symfony Console
+|--------------------------------------------------------------------------
+|
+| The Console component eases the creation of beautiful and testable 
+| command line interfaces.
+| 
+| The Console component allows you to create command-line commands. 
+| Your console commands can be used for any recurring task, 
+| such as cronjobs, imports, or other batch jobs.
+|
+*/
+
+use Symfony\Component\Console\Application;
+
+$application = new Application();
+
+/**
+ * Auto load command from app/Commands.
+ */
+
+$dirCommand = glob('app/Commands/*');
+natsort($dirCommand);
+
+foreach (array_reverse($dirCommand) as $key => $value) {
+
+    $getLast = explode("/", $value);
+    $getLast = $getLast[count($getLast) - 1];
+    $getLast = str_replace(".php", "", $getLast);
+
+    $application->add(new $getLast());
+
+}
+
+/**
+ * Execute commands.
+ */
+
+$application->run();

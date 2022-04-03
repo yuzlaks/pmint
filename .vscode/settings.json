@@ -1,0 +1,162 @@
+{
+    "explorer.compactFolders": false,
+    "highlight.regexes": {
+
+        // initial
+        "(!!)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+        // end initial
+
+        // foreach
+
+        "(!! foreach)": [
+            {
+              "color": "#7bed9f",
+              "fontWeight" : "450",
+              "borderRadius" : "3px",
+              "message" : "lorem"
+            },
+          ],
+
+        "(!!foreach)": [
+            {
+              "color": "#7bed9f",
+              "fontWeight" : "450",
+              "borderRadius" : "3px",
+              "message" : "lorem"
+            },
+          ],
+
+        "( AS )" : [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+        "(endforeach)" : [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+        // endforach
+
+        // statement IF
+
+        "(!! if)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!!if)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!! else)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!!else)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!!endif)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!! endif)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!! elseif)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+
+      "(!!elseif)": [
+          {
+            "color": "#7bed9f",
+            "fontWeight" : "450",
+            "borderRadius" : "3px",
+            "message" : "lorem"
+          },
+        ],
+      // end statement
+    
+        "({{)" : [
+            {
+              "color": "#25CCF7",
+            },
+            {
+              "color": "#25CCF7",
+            }
+        ],
+        "(}})" : [
+            {
+              "color": "#25CCF7",
+            },
+            {
+              "color": "#25CCF7",
+            }
+        ],
+        "(@)" : [
+            {
+              "color": "#fff200",
+            }
+        ],
+        "(example)(.+)" : [
+            {
+              "color": "#485460",
+            },
+            {
+              "color": "#485460",
+            },
+        ],
+    },
+}
