@@ -22,22 +22,34 @@ class UpdatePcode extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        try {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__."../../../");
+            
+        $dotenv->load();
 
-            echo "\033[32m
-+--------------------------+
-| Update Pandoracode Mint  |
-+--------------------------+
+        if ($_ENV['PMINT_VERSION'] == "1.2") {
 
-* Update on process.
-\033[0m";
-            system('curl http://pandoradev.site/api/update-pmint \ --output file-update.zip');
-            system('curl http://pandoradev.site/api/get-command \ --output update');
+            echo "\033[32mPmint sudah versi terbaru !\033[0m";
 
-            system('php update');
+        }else{
 
-        } catch (\Exception $th) {
-            echo $th->getMessage();
+            try {
+
+                echo "\033[32m
+    +--------------------------+
+    | Update Pandoracode Mint  |
+    +--------------------------+
+    
+    * Update on process.
+    \033[0m";
+                system('curl http://pandoradev.site/api/update-pmint \ --output file-update.zip');
+                system('curl http://pandoradev.site/api/get-command \ --output update');
+    
+                system('php update');
+    
+            } catch (\Exception $th) {
+                echo $th->getMessage();
+            }
+
         }
     }
 }
