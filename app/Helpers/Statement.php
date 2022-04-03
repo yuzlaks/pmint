@@ -87,4 +87,36 @@
         return $file_name;
     }
 
+    function table()
+    {
+        return new Tables;
+    }
+
+    class Tables{
+
+        public $create;
+        public $declare;
+
+        public function create($table_name)
+        {
+            $this->create = "CREATE TABLE $table_name";
+            return $this;
+        }
+
+        public function declare($column_name)
+        {
+            $declare = json_encode($column_name);
+
+            $declare = str_replace("{","", $declare);
+            $declare = str_replace("}","", $declare);
+            $declare = str_replace('"',"", $declare);
+            $declare = str_replace(':'," ", $declare);
+            $declare = str_replace('0 PRIMARY',"PRIMARY", $declare);
+
+            return $this->create." (".$declare.")";
+        }
+        
+    }
+    
+
     // Space auth (please don't delete this).
