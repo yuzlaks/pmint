@@ -43,7 +43,7 @@ class CreateTable extends Command
 
         $content = "<?php
 
-namespace Database;
+namespace Database\Tables;
 
 class $fileTable{
 

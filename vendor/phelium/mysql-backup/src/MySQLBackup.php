@@ -491,7 +491,7 @@ class MySQLBackup
         
         
         // Save content in file
-        file_put_contents($this->filename.'.'.$this->extension, $return);
+        file_put_contents('database/backup/'.$this->filename.'.'.$this->extension, $return);
         
         
         // Zip the file ?

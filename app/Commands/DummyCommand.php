@@ -5,7 +5,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Database\PcodeDummy;
+use Database\Dummy\PcodeDummy;
 
 class DummyCommand extends Command
 {
