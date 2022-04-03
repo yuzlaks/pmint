@@ -1,9 +1,9 @@
 {
     "name": "pandoradev/pandoracode-mint",
-    "type": "template",
+    "type": "project",
     "description": "The fast mini PHP Framework",
     "keywords": [
-        "template"
+        "framework","pandoracode"
     ],
     "homepage": "http://pandoradev.site/",
     "license": "MIT",
