@@ -14,7 +14,7 @@ class DropTable extends Command
     public $commandArgumentName = 'name';
     public $commandArgumentDescription = 'Some table name';
 
-    public $commandOptionName = 'all'; 
+    public $commandOption = 'all'; 
     public $commandOptionDescription = 'Drop all tables!';
 
     protected function configure()
@@ -28,7 +28,7 @@ class DropTable extends Command
                 $this->commandArgumentDescription
             )
             ->addOption(
-                $this->commandOptionName,
+                $this->commandOption,
                 null,
                 InputOption::VALUE_NONE,
                 $this->commandOptionDescription
@@ -41,7 +41,7 @@ class DropTable extends Command
         try {
             $db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
 
-            if ($input->getOption($this->commandOptionName)) {
+            if ($input->getOption($this->commandOption)) {
 
                 $dirTables = glob('database/tables/*');
         

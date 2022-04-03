@@ -33,7 +33,7 @@ class InsertTable extends Command
         if ($input->getArgument($this->commandArgumentName)) {
             
             $nameFile = $input->getArgument($this->commandArgumentName);
-            $nameFile = "Database\\Tables\\$nameFile";
+            $nameFile = "Database\\Tables\\".ucfirst($nameFile);
             $nameFile = new $nameFile();
 
             $db->exec($nameFile->table);

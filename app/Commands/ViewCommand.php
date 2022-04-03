@@ -124,9 +124,17 @@ function makeForm($fileNameCommand)
 
     $myfile  = fopen("resources/views/$fileNameCommand/form.php", "w") or die("Unable to open file!");
 
-    $content = "<h1>Form Page</h1>";
+    $content = "<form action=!{{ url(`store-x`) }}! method=!POST! enctype=!multipart/form-data!>
+
+    <label>Label</label>
+    <input type=!text! name=!x!>
+    <button type=!submit!>Simpan</button>
+
+</form>";
 
     $content = str_replace("'$'", '$', $content);
+    $content = str_replace("`", "'", $content);
+    $content = str_replace("!", '"', $content);
 
     fwrite($myfile, $content);
     fclose($myfile);
@@ -137,9 +145,17 @@ function makeFormEdit($fileNameCommand)
 
     $myfile  = fopen("resources/views/$fileNameCommand/form-edit.php", "w") or die("Unable to open file!");
 
-    $content = "<h1>Form Edit Page</h1>";
+    $content = "<form action=!{{ url(`update-x/`.'$'data->id) }}! method=!POST! enctype=!multipart/form-data!>
+
+    <label>Label</label>
+    <input type=!text! name=!x! value=!{{ '$'data->x }}!>
+    <button type=!submit!>Simpan</button>
+
+</form>";
 
     $content = str_replace("'$'", '$', $content);
+    $content = str_replace("`", "'", $content);
+    $content = str_replace("!", '"', $content);
 
     fwrite($myfile, $content);
     fclose($myfile);
@@ -150,9 +166,36 @@ function makeData($fileNameCommand)
 
     $myfile  = fopen("resources/views/$fileNameCommand/data.php", "w") or die("Unable to open file!");
 
-    $content = "<h1>Data Page</h1>";
+    $content = "<table border=!1px!>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        ??foreach('$'data AS '$'key => '$'item)??
+
+        <tr>
+
+            <td>{{ '$'key + 1 }}</td>
+            <td>
+                <a href=!{{ url(`edit-x/`.'$'item->id) }}!>Edit</a>
+                <a href=!{{ url(`delete-x/`.'$'item->id) }}!>Delete</a>
+            </td>
+
+        </tr>
+
+        ??endforeach??
+
+    </tbody>
+</table>";
 
     $content = str_replace("'$'", '$', $content);
+    $content = str_replace("`", "'", $content);
+    $content = str_replace("!", '"', $content);
+    $content = str_replace("??", '!!', $content);
 
     fwrite($myfile, $content);
     fclose($myfile);
