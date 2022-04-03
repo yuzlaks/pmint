@@ -39,19 +39,27 @@ class CheckDBCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {        
 
-        try {
+        if (!empty($_ENV['DB_NAME'])) {
 
-            $this->db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+            try {
 
-            check($this->db);
-
-            dbConnectMsg($_ENV['DB_NAME']);
-
-        } catch (PDOException $e) {
-
-            dbFailMsg($e->getMessage());
+                $this->db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+    
+                check($this->db);
+    
+                dbConnectMsg($_ENV['DB_NAME']);
+    
+            } catch (PDOException $e) {
+    
+                dbFailMsg($e->getMessage());
+                
+                die();
+            }
             
-            die();
+        }else{
+
+            dbFailMsg("Database belum disetting.");
+
         }
     }
 }

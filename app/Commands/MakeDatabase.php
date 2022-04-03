@@ -30,15 +30,28 @@ class MakeDatabase extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $name = $input->getArgument($this->commandArgumentName);
+        try {
 
-        $dbh = new PDO("mysql:host=$_ENV[DB_HOST]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+            $name = $input->getArgument($this->commandArgumentName);
 
-        $dbh->exec("CREATE DATABASE `$name`;")
+            $dbh = new PDO("mysql:host=$_ENV[DB_HOST]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
 
-        or die(print_r($dbh->errorInfo(), true));
+            $dbh->exec("CREATE DATABASE `$name`;")
 
-        self::rewriteEnv($name);
+            or die(print_r($dbh->errorInfo(), true));
+
+            self::rewriteEnv($name);
+
+            echo "\033[32mAuto setup environment \033[0m- \033[33m.env\n";
+            echo "\033[32mSuccess create database $name\033[0m\n";
+
+        } catch (\Exception $th) {
+
+            $error = $th->getMessage();
+
+            echo "\e[0;30;41m$error\e[0m\n";
+
+        }
 
     }
 
