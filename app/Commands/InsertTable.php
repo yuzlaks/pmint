@@ -40,7 +40,7 @@ class InsertTable extends Command
 
             $name = $input->getArgument($this->commandArgumentName);
 
-            echo "\033[32mSuccess insert tables : $name\033[0m\n";
+            echo "\033[32mSuccess insert table : $name\033[0m\n";
 
         }else{
 
@@ -58,7 +58,7 @@ class InsertTable extends Command
     
                     $db->exec($data->table);
     
-                    echo "\033[32mSuccess insert tables : $getLast.\033[0m\n";
+                    echo "\033[32mSuccess insert table : $getLast.\033[0m\n";
     
                 }
                 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Database\Dummy;
 
 use QB;
 use Faker\Factory as Faker;
@@ -29,7 +29,7 @@ class PcodeDummy{
 
             QB::table('table_name')->insert([
 
-                "column_name"   => $this->faker->name,
+                "name"   => $this->faker->name,
                 
             ]);
 

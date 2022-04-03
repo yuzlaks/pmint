@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ShowTables extends Command
 {
-    public $commandName = 'show:table';
+    public $commandName = 'list:table';
     public $commandDescription = 'Show all tables from database';
 
     protected function configure()
@@ -31,15 +31,20 @@ class ShowTables extends Command
 
             $data = [];
             foreach ($query->fetchAll(PDO::FETCH_COLUMN) as $key => $value) {
+
+                $sql = "SELECT count(*) FROM $value"; 
+                $result = $db->prepare($sql); 
+                $result->execute(); 
+                $number_of_rows = $result->fetchColumn(); 
                 
-                $data[] = [$value];
+                $data[] = [$value, $number_of_rows];
 
             }
 
-            echo "\n\033[32mList table from database : $_ENV[DB_NAME]\033[0m\n";
+            echo "\n\033[32m* Table from database $_ENV[DB_NAME] *\033[0m\n";
             
             $table = new Table($output);
-            $table->setHeaders(['Table name'])->setRows($data);
+            $table->setHeaders(['Nama Tabel','Jumlah Data'])->setRows($data);
             $table->render();
 
         } catch (\Exception $th) {
