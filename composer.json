@@ -15,7 +15,8 @@
             "role": "Developer"
         },
         {
-            "name": "M. Maksum Irfani",
+            "name": "M. Ma'sum Irfani",
+            "email": "muhammadwalle123@gmail.com",
             "homepage": "http://pandoradev.site/",
             "role": "Developer"
         }
@@ -44,6 +45,7 @@
     "autoload": {
         "classmap": [
             "app/Commands",
+            "app/Core",
             "controllers",
             "database",
             "app/Resources/Views/Error"

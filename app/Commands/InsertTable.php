@@ -8,7 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class InsertTable extends Command
 {
-    public $commandName = 'insert:table';
+    public $commandName = 'migrate';
     public $commandDescription = 'Execute all tables in "database/tables"';
 
     public $commandArgumentName = 'name';
@@ -28,6 +28,7 @@ class InsertTable extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
         $db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
 
         if ($input->getArgument($this->commandArgumentName)) {
@@ -36,11 +37,11 @@ class InsertTable extends Command
             $nameFile = "Database\\Tables\\".ucfirst($nameFile);
             $nameFile = new $nameFile();
 
-            $db->exec($nameFile->table);
+            $db->exec($nameFile->command);
 
             $name = $input->getArgument($this->commandArgumentName);
 
-            echo "\033[32mSuccess insert table : $name\033[0m\n";
+            echo "\033[32mSuccess migrate table : $name\033[0m\n";
 
         }else{
 
@@ -54,11 +55,11 @@ class InsertTable extends Command
     
                 $data = new $getLast();
     
-                if (!empty($data->table)) {
+                if (!empty($data->command)) {
     
-                    $db->exec($data->table);
+                    $db->exec($data->command);
     
-                    echo "\033[32mSuccess insert table : $getLast.\033[0m\n";
+                    echo "\033[32mSuccess migrate table : $getLast.\033[0m\n";
     
                 }
                 

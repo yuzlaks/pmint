@@ -571,7 +571,10 @@ use MiladRahimi\PhpRouter\Router;
     public function rewritePackageAuth()
     {
 
-        $write_text = '// source : https://github.com/delight-im/PHP-Auth
+        $write_text = '
+        <?php
+        
+        // source : https://github.com/delight-im/PHP-Auth
         
             if ($_ENV[`DB_NAME`]) {
             

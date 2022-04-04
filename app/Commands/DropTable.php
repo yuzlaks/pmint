@@ -38,45 +38,62 @@ class DropTable extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        try {
-            $db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+        $name = $input->getArgument($this->commandArgumentName);
 
-            if ($input->getOption($this->commandOption)) {
-
-                $dirTables = glob('database/tables/*');
+        $message   =  "Apakah anda yakin ingin menghapus table $name [Y/N]";
+        print $message;
+        $confirmation = trim( fgets( STDIN ) );
+        $confirmation = strtolower($confirmation);
         
-                foreach ($dirTables as $key => $value) {
+        if ( $confirmation === 'y' ) {
+            
+
+            try {
+                $db = new PDO("mysql:host=$_ENV[DB_HOST];dbname=$_ENV[DB_NAME]", $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+
+                if ($input->getOption($this->commandOption)) {
+
+                    $dirTables = glob('database/tables/*');
+            
+                    foreach ($dirTables as $key => $value) {
+                        
+                        $getLast = explode("/", $value);
+                        $getLast = $getLast[count($getLast) - 1];
+                        $getLast = str_replace(".php", "", $getLast);
+
+                        $execute = "DROP TABLE ".strtolower($getLast);
+
+                        $db->exec($execute);
+
+                    }
+
+                    echo "\033[32mSuccess drop all table\033[0m\n";
+
+                }else{
+
+                    $name    = $input->getArgument($this->commandArgumentName);
                     
-                    $getLast = explode("/", $value);
-                    $getLast = $getLast[count($getLast) - 1];
-                    $getLast = str_replace(".php", "", $getLast);
-
-                    $execute = "DROP TABLE ".strtolower($getLast);
-
+                    $execute = "DROP TABLE ".strtolower($name);
+            
                     $db->exec($execute);
+
+                    echo "\033[32mSuccess drop table $name\033[0m\n";
 
                 }
 
-                echo "\033[32mSuccess drop all table\033[0m\n";
 
-            }else{
+            } catch (\Exception $th) {
 
-                $name    = $input->getArgument($this->commandArgumentName);
-                
-                $execute = "DROP TABLE ".strtolower($name);
-        
-                $db->exec($execute);
+                $error = $th->getMessage();
 
-                echo "\033[32mSuccess drop table $name\033[0m\n";
+                echo "\e[0;30;41m$error\e[0m\n";
 
             }
 
+        }else{
 
-        } catch (\Exception $th) {
-
-            $error = $th->getMessage();
-
-            echo "\e[0;30;41m$error\e[0m\n";
+            echo "Dibatalkan.";
+            exit (0);
 
         }
         

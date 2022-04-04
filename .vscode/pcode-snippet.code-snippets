@@ -169,7 +169,7 @@
 
 		"prefix" : "p:select",
 
-		"body": "<select name='' id='' class=''>\n\n\t!! foreach($data AS $1) !!\n\n\t\t<option value='{{ $2 }}'>{{ $3 }}</option>\n\n\t!! endforeach !!\n\n</select>\n"
+		"body": "<select name='' id='' class=''>\n\n\t!! foreach($$data AS $1) !!\n\n\t\t<option value='{{ $2 }}'>{{ $3 }}</option>\n\n\t!! endforeach !!\n\n</select>\n"
 
 	},
 

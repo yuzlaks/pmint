@@ -7,11 +7,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateTable extends Command
 {
-    public $commandName = 'make:table';
-    public $commandDescription = 'Make some table database';
+    public $commandName = 'make:migration';
+    public $commandDescription = 'Make some migration database';
 
     public $commandArgumentName = 'name';
-    public $commandArgumentDescription = 'Some table name';
+    public $commandArgumentDescription = 'Some migration name';
 
     protected function configure()
     {
@@ -45,32 +45,45 @@ class CreateTable extends Command
 
 namespace Database\Tables;
 
-class $fileTable{
+use App\Core\PcodeMigration;
 
-    public '$'table;
-
+class $fileTable extends PcodeMigration
+{
     public function __construct()
-    {
-        
-        '$'this->table = table()->create('$nameTable')->declare([
+    {           
 
-            'id'  => 'INT AUTO_INCREMENT',
-            'PRIMARY KEY(id)'
-
-        ]);
+        self::createTable();
+        // self::alterTable();
 
     }
 
+    public function createTable()
+    {
+        '$'this->table(!$nameTable!)
+            ->addColumn(!id!, !int!)->ai()     
+            ->addColumn(!nama!, !varchar(20)!)->nullable()
+            ->addColumn(!date!, !timestamp!)->default(!CURRENT_TIMESTAMP!)
+            ->create();
+    }
+
+    public function alterTable()
+    {
+        '$'this->table(!$nameTable!)
+            ->alterChangeColumn(!name!, !names!, !varchar(200)!)
+            ->alter();
+    }
+    
 }";
 
         $content = str_replace("'$'", '$', $content);
         $content = str_replace("'", '"', $content);
+        $content = str_replace("!", '"', $content);
 
         fwrite($myfile, $content);
         fclose($myfile);
 
         echo "\n\033[32m Create : \033[0m $fileTable.php - \033[33mdatabase/tables/$fileTable.php \n";
-        echo "\033[32m Success create table file. \033[0m\n";
+        echo "\033[32m Success create migration file. \033[0m\n";
 
         return exec("composer dump -o");
     }

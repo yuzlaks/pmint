@@ -251,6 +251,7 @@ class ComposerStaticInit2bf5f5ec4006d3e178e4df4b19f3469c
 
     public static $classMap = array (
         'Apfelbox\\FileDownload\\FileDownload' => __DIR__ . '/..' . '/apfelbox/php-file-download/src/FileDownload.php',
+        'App\\Core\\PcodeMigration' => __DIR__ . '/../..' . '/app/Core/PcodeMigration.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BackupDB' => __DIR__ . '/../..' . '/app/Commands/BackupDB.php',
         'Carbon\\AbstractTranslator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
@@ -339,6 +340,10 @@ class ComposerStaticInit2bf5f5ec4006d3e178e4df4b19f3469c
         'CoreCommand' => __DIR__ . '/../..' . '/app/Commands/CoreCommand.php',
         'CreateTable' => __DIR__ . '/../..' . '/app/Commands/CreateTable.php',
         'Database\\Dummy\\PcodeDummy' => __DIR__ . '/../..' . '/database/dummy/PcodeDummy.php',
+        'Database\\Tables\\Buku' => __DIR__ . '/../..' . '/database/tables/Buku.php',
+        'Database\\Tables\\Jurusan' => __DIR__ . '/../..' . '/database/tables/Jurusan.php',
+        'Database\\Tables\\Kelas' => __DIR__ . '/../..' . '/database/tables/Kelas.php',
+        'Database\\Tables\\Siswa' => __DIR__ . '/../..' . '/database/tables/Siswa.php',
         'Delight\\Auth\\Administration' => __DIR__ . '/..' . '/delight-im/auth/src/Administration.php',
         'Delight\\Auth\\AmbiguousUsernameException' => __DIR__ . '/..' . '/delight-im/auth/src/AmbiguousUsernameException.php',
         'Delight\\Auth\\AttemptCancelledException' => __DIR__ . '/..' . '/delight-im/auth/src/AttemptCancelledException.php',

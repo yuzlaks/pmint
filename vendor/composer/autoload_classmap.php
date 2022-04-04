@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Apfelbox\\FileDownload\\FileDownload' => $vendorDir . '/apfelbox/php-file-download/src/FileDownload.php',
+    'App\\Core\\PcodeMigration' => $baseDir . '/app/Core/PcodeMigration.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'BackupDB' => $baseDir . '/app/Commands/BackupDB.php',
     'Carbon\\AbstractTranslator' => $vendorDir . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
@@ -95,6 +96,10 @@ return array(
     'CoreCommand' => $baseDir . '/app/Commands/CoreCommand.php',
     'CreateTable' => $baseDir . '/app/Commands/CreateTable.php',
     'Database\\Dummy\\PcodeDummy' => $baseDir . '/database/dummy/PcodeDummy.php',
+    'Database\\Tables\\Buku' => $baseDir . '/database/tables/Buku.php',
+    'Database\\Tables\\Jurusan' => $baseDir . '/database/tables/Jurusan.php',
+    'Database\\Tables\\Kelas' => $baseDir . '/database/tables/Kelas.php',
+    'Database\\Tables\\Siswa' => $baseDir . '/database/tables/Siswa.php',
     'Delight\\Auth\\Administration' => $vendorDir . '/delight-im/auth/src/Administration.php',
     'Delight\\Auth\\AmbiguousUsernameException' => $vendorDir . '/delight-im/auth/src/AmbiguousUsernameException.php',
     'Delight\\Auth\\AttemptCancelledException' => $vendorDir . '/delight-im/auth/src/AttemptCancelledException.php',
